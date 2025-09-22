@@ -54,4 +54,3 @@ def print_except_banana (items, exclude):
         print(item)
 print_except_banana(list, "banana")
 
-# -----------------------------------------------------------------------------------------------------------------------#
