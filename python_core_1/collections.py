@@ -37,7 +37,6 @@ remove = list.pop(2)
 print(remove) #can print the item that is deleted
 print(list)
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create two lists. Append one list with another, explain and print results.
 # Expend one list with another, explain and print results###
@@ -51,7 +50,6 @@ print(list_a) #append add the 2nd list as one object to the 1st list
 list_a.extend(list_b)
 print(list_a) #extend add the items of the 2nd list to the 1st list
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create dictionary with person info: name, surname, age - assign values###
 dict = {"name": "John", "surname": "Doe", "age": 30}
@@ -82,7 +80,6 @@ print(dict["name"], dict["children"])
 del dict["age"]
 print(dict)
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create the tuple with different data types (at least 10 items). Print all items###
 tuple_a = (7, 5.78, 7 + 4j, 'Hello World', "Python", True, False, ["The world is mine", 543, 6.9, False],
@@ -113,4 +110,3 @@ print(a)
 print(b)
 print(c)
 print(rest)
-

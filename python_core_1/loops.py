@@ -12,13 +12,11 @@ for x in fruits:
 for x in fruits:
     print(x, len(x))
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 #Using for loop print all the numbers in range from 2 to 99 including
 for x in range(2, 100):
     print(x)
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 #Using while loop print all the numbers 16<
 x = 0
@@ -26,7 +24,6 @@ while x < 16:
     print(x)
     x += 1 #using counter
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 #Using while loop print all numbers in range from 3 to 33 including
 x = 3
@@ -34,7 +31,6 @@ while x <= 33:
     print(x)
     x += 1
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create list ["orange", "apple", "banana", "cherry"]. Create a function that will iterate and print the items
 # and break from the function, when it reaches "banana".###
@@ -53,4 +49,3 @@ def print_except_banana (items, exclude):
             continue
         print(item)
 print_except_banana(list, "banana")
-

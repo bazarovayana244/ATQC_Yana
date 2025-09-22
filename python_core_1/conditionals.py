@@ -11,7 +11,6 @@ if a > b:
     print ("Yes, this is True")
 #the boolean expression is false, so anything is printed
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 #Create two int variables with different values. Write a condition, which prints "x is bigger than y",
 # prints "x is equal to y", or prints "y is bigger than x"
@@ -42,7 +41,6 @@ elif x == y:
 else:
     print("y is bigger than x")
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create str variable with value "The world is mine". Create condition which prints "Yes, this is true",
 # if str contains word "mine", else prints "No, it`s not"###

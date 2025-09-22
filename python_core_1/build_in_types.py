@@ -14,7 +14,6 @@ print(b == c)
 
 # int and float can not be compared with str using "<" or ">"- TypeError
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Using 'Casting' create int, float, str variables with value 5. Divide each variable by 2. Print results, explain results###
 a = int(5)
@@ -35,7 +34,6 @@ divide_c = int(c) / 2
 print(divide_c)
 print(int(c) / 2)
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Using "Casting" create 3 int variables with values: 5, 8.0, "7". Print these variables, explain results###
 a = int(5)
@@ -49,7 +47,6 @@ print(c)
 
 # Explain the results: all values are converted to int
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 ###Create string variable with value "Hello world". Print the string. Print length of the string.
 # Print the first symbol of the string. Assign last 5 chars of the string to the new variable and print.
@@ -78,7 +75,6 @@ print(split)  # print the list with 2 separate words
 print(split[0])  # print 1st word
 print(split[1])  # print 2nd word
 
-# -----------------------------------------------------------------------------------------------------------------------#
 
 # Create two variables "name" and "age". Using string formatting print the next: "Hello my name is %name%, I`m %age%"
 name = "Yana"
