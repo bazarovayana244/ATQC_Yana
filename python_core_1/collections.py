@@ -40,15 +40,15 @@ print(list)
 
 ###Create two lists. Append one list with another, explain and print results.
 # Expend one list with another, explain and print results###
-list_a = ['Enjoy the silence', 6.9, True, 78.3]
-list_b = ['The world is mine', 543, False]
-print(list_a, list_b)
+a = ['Enjoy the silence', 6.9, True, 78.3]
+b = ['The world is mine', 543, False]
+print(a, b)
 
-list_a.append(list_b)
-print(list_a) #append add the 2nd list as one object to the 1st list
+a.append(b)
+print(a) #append add the 2nd list as one object to the 1st list
 
-list_a.extend(list_b)
-print(list_a) #extend add the items of the 2nd list to the 1st list
+a.extend(b)
+print(a) #extend add the items of the 2nd list to the 1st list
 
 
 ###Create dictionary with person info: name, surname, age - assign values###
@@ -94,7 +94,7 @@ print(tuple_a[6:10])
 print(tuple_a.index(False))
 
 #Create another tuple, join both and print result
-tuple_b = ( 67, 78.4, "It`s been avile", {"breed": "dachshund", "name": "Smoky"})
+tuple_b = (67, 78.4, "It`s been avile", {"breed": "dachshund", "name": "Smoky"})
 print(tuple_a + tuple_b)
 #or create another tuple and then print
 tuple_c = (tuple_a + tuple_b)

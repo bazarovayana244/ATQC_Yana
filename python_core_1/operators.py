@@ -41,21 +41,21 @@ print(a != c_int)
 
 ###Create int variable x and assign it with 5 value. Using assignment operator += assign x with value 3.
 #Print and explain result###
-x = 5
-x += 3
+a = 5
+a += 3
 print(x) #the result is shortcut for addition x = 5 + 3 = 8
 
 
 ###Create two str variables "Tomato" and "Onion". Compare them using comparison operators and print results.
 #Use arithmetic operator + and assign result to another variable###
 
-x = "Tomato"
-y = "Onion"
+a = "Tomato"
+b = "Onion"
 #Strings can be compared between themselves lexicographically (char by char)
-print(x > y)
-print(x < y)
-print(x == y)
-print(x != y)
+print(a > b)
+print(a < b)
+print(a == b)
+print(a != b)
 
-xy = x + y #operator + works as concatenation on strings
-print(xy)
+ab = a + b #operator + works as concatenation on strings
+print(ab)
