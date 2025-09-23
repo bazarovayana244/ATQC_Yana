@@ -25,7 +25,7 @@ text = f.read()
 print(text)
 f.close()
 
-with open("PythonCore.txt", "r") as f: #using contex manager(auto closing)
+with open("PythonCore.txt", "r") as f: #using context manager(auto closing)
     text = f.read()
     print(text)
 
@@ -54,6 +54,6 @@ with open("Python_love_copy.txt", "r") as f: #print the result
 ###Using context manager combine each line from 1st file with the corresponding line in the 2nd file###
 with open("Python_love.txt", "r") as f1, open ("Python_love_copy.txt", "r") as f2, open("combo_text.txt", "w") as out:
     for l1, l2 in zip(f1, f2):
-        combo_text = l1.strip() + "" + l2.strip() + "\n"
+        combo_text = l1.strip() + l2.strip() + "\n"
         out.write(combo_text)
         print(combo_text, end="")

@@ -70,5 +70,3 @@ print_friday_message()
 
 #TASK 5#
 file_handle = open('myfile.txt', 'r')
-
-

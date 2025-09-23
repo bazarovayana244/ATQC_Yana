@@ -22,7 +22,7 @@ dogs('dachshund', 'husky', 'beagle')
 
 ###Create a function which can be called with any number of arguments (name, surname, age). Print user`s name and age###
 def person_data (**data):
-    print(f"User`s name is {data["name"]} and age is {data["age"]}")
+    print(f"User`s name is {data['name']} and age is {data['age']}")
 person_data(name = "John", surname = "Doe", age = 30)
 
 
@@ -60,4 +60,3 @@ def print_factorial(number):
     print(f"Factorial of {number} is {factorial(number)}")
 
 print_factorial(9)
-

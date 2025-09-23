@@ -56,4 +56,3 @@ if "mine" in x:
     print("Yes, this is true")
 else:
     print("No, it`s not")
-
