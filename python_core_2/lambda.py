@@ -35,5 +35,5 @@ print(double)
 ###Using lambda filter out only odd items from the list using filter()###
 x = [1, 2, 3, 4]
 
-odd = list(filter(lambda a: a % 2 != 0, x))
-print(odd)
+odd_numbers = list(filter(lambda a: a % 2 != 0, x))
+print(odd_numbers)
