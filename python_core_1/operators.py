@@ -43,7 +43,7 @@ print(a != c_int)
 #Print and explain result###
 a = 5
 a += 3
-print(x) #the result is shortcut for addition x = 5 + 3 = 8
+print(a) #the result is shortcut for addition x = 5 + 3 = 8
 
 
 ###Create two str variables "Tomato" and "Onion". Compare them using comparison operators and print results.
