@@ -5,7 +5,7 @@
 from playwright.sync_api import sync_playwright
 import time
 
-class UkrNetMailPage:
+class UkrNetMail:
     def __init__(self, page):
         self.page = page
         self.login_field = "input[name='login']"
@@ -36,11 +36,11 @@ class UkrNetMailPage:
         time.sleep(4)
 
     def get_email_details(self):
-        from_emails = self.page.locator('span[aria-label="Відправник"] span._0DwAbJNo').nth(0).inner_text()
+        from_emails = self.page.locator('(//span[@aria-label="Відправник"])[1]').inner_text()
 
-        to_emails = self.page.locator('span[aria-label="Відправник"] span._0DwAbJNo').nth(1).inner_text()
+        to_emails = self.page.locator('(//span[@aria-label="Відправник"])[2]').inner_text()
 
-        subject = self.page.locator('h1').inner_text()
+        subject = self.page.locator('//button[@aria-label="Відмітити непрочитаним"]/../h1').inner_text()
 
         return from_emails, to_emails, subject
 
@@ -48,7 +48,7 @@ def test_get_latest_two_emails():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
-        mail_page = UkrNetMailPage(page)
+        mail_page = UkrNetMail(page)
 
         mail_page.open()
         mail_page.login("test.playwright@ukr.net", "q!RamZWyGBa4Z!j")
@@ -68,7 +68,7 @@ def test_email_details():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
-        mail_page = UkrNetMailPage(page)
+        mail_page = UkrNetMail(page)
 
         mail_page.open()
         mail_page.login("test.playwright@ukr.net", "q!RamZWyGBa4Z!j")
