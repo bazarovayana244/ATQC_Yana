@@ -1,2 +1,0 @@
-Be aware that it expects you to have a basic understanding of programming in general.
-It helps to have a Python interpreter handy for hands-on experience,
