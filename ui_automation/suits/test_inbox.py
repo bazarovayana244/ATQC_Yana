@@ -34,6 +34,6 @@ class TestInboxPage:
         assert from_email != "", "From field is empty"
         assert to_email != "", "To field is empty"
 
-        assert page.locator(locators.subject_xpath).is_visible()(timeout=15000), "Subject element is not visible"
+        assert page.locator(locators.subject_xpath).is_visible(timeout=15000), "Subject element is not visible"
 
         print("Email details are visible")

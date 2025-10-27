@@ -1,4 +1,5 @@
 import pytest
+import re
 from playwright.sync_api import expect
 from ui_automation.pages.login_page import LoginPage
 from ui_automation.pages import locators
@@ -11,7 +12,7 @@ class TestLogin:
 
         login_page.open()
         login_page.login("test.playwright@ukr.net", "q!RamZWyGBa4Z!j")
-        expect(page).to_have_url("https://mail.ukr.net/desktop*", timeout=10000)
+        expect(page).to_have_url(re.compile(r"https://mail\.ukr\.net/desktop/.*"), timeout=10000)
 
         assert "desktop" in page.url, f"Expected 'desktop' in URL, got {page.url}"
 
