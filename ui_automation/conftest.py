@@ -8,7 +8,6 @@ def playwright_instance():
 
 @pytest.fixture(scope="session")
 def browser(playwright_instance):
-    # Chromium з новим контекстом, headless=False для відладки
     browser = playwright_instance.chromium.launch(headless=False)
     yield browser
     browser.close()

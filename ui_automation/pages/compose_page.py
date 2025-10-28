@@ -17,6 +17,7 @@ class ComposePage:
         frame.locator(locators.body_field).fill(body)
 
         self.page.click(locators.send_button)
+        expect(self.page.locator(locators.popup_button_inbox)).to_be_visible(timeout=10000)
         expect(self.page.locator(locators.sent_folder)).to_be_visible(timeout=10000)
 
     def open_sent_folder(self):
