@@ -13,7 +13,7 @@ class CalculatorClient:
     def multiply(self, a: int, b: int) -> int:
         return self.client.service.Multiply(a, b)
 
-    def divide(self, a: int, b: int) -> int:
+    def divide(self, a: int, b: int) -> float:
         try:
             return self.client.service.Divide(a, b)
         except exceptions.Fault as e:
