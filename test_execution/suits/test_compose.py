@@ -1,8 +1,8 @@
 import datetime
 import pytest
-from ui_automation.pages.login_page import LoginPage
-from ui_automation.pages.compose_page import ComposePage
-from ui_automation.pages import locators
+from test_execution.pages.login_page import LoginPage
+from test_execution.pages.compose_page import ComposePage
+from test_execution.pages import locators
 from playwright.sync_api import expect
 
 @pytest.mark.compose

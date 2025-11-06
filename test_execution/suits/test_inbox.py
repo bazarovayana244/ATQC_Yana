@@ -1,7 +1,7 @@
 import pytest
-from ui_automation.pages.login_page import LoginPage
-from ui_automation.pages.inbox_page import InboxPage
-from ui_automation.pages import locators
+from test_execution.pages.login_page import LoginPage
+from test_execution.pages.inbox_page import InboxPage
+from test_execution.pages import locators
 from playwright.sync_api import expect
 
 @pytest.mark.inbox

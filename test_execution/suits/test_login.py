@@ -1,8 +1,8 @@
 import pytest
 import re
 from playwright.sync_api import expect
-from ui_automation.pages.login_page import LoginPage
-from ui_automation.pages import locators
+from test_execution.pages.login_page import LoginPage
+from test_execution.pages import locators
 
 @pytest.mark.login
 @pytest.mark.usefixtures("page")

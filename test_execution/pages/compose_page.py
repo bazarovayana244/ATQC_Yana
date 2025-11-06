@@ -1,5 +1,5 @@
 from playwright.sync_api import Page, expect
-from ui_automation.pages import locators
+from test_execution.pages import locators
 
 class ComposePage:
     def __init__(self, page: Page):
