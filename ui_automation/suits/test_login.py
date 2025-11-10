@@ -4,6 +4,7 @@ from playwright.sync_api import expect
 from ui_automation.pages.login_page import LoginPage
 from ui_automation.pages import locators
 
+@pytest.mark.login
 @pytest.mark.usefixtures("page")
 class TestLogin:
 

@@ -5,6 +5,7 @@ from ui_automation.pages.compose_page import ComposePage
 from ui_automation.pages import locators
 from playwright.sync_api import expect
 
+@pytest.mark.compose
 @pytest.mark.usefixtures("page")
 class TestComposeEmail:
 
