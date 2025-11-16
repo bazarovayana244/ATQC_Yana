@@ -4,6 +4,7 @@ from ui_automation.pages.inbox_page import InboxPage
 from ui_automation.pages import locators
 from playwright.sync_api import expect
 
+@pytest.mark.inbox
 @pytest.mark.usefixtures("page")
 class TestInboxPage:
 
