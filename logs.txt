@@ -1,0 +1,38 @@
+[2025-11-16 20:28:49] [INFO] Opening login page: https://mail.ukr.net/
+[2025-11-16 20:28:51] [INFO] Filling username: test.playwright@ukr.net
+[2025-11-16 20:28:52] [INFO] Filling password
+[2025-11-16 20:28:52] [INFO] Clicking submit button
+[2025-11-16 20:28:52] [INFO] Waiting for compose button to be visible
+[2025-11-16 20:28:55] [INFO] Login successful, compose button visible
+[2025-11-16 20:29:14] [INFO] Opening login page: https://mail.ukr.net/
+[2025-11-16 20:29:16] [INFO] Filling username: test.playwright@ukr.net
+[2025-11-16 20:29:17] [INFO] Filling password
+[2025-11-16 20:29:17] [INFO] Clicking submit button
+[2025-11-16 20:29:17] [INFO] Waiting for compose button to be visible
+[2025-11-16 20:29:20] [INFO] Login successful, compose button visible
+[2025-11-16 20:29:20] [INFO] Waiting for inbox to load
+[2025-11-16 20:29:21] [INFO] Latest two emails subjects: 1) Mail delivery failed: returning message to senderThis message was created automatically, by the mail delivery software. A message that you have sent could not be delivered to one or more of its recipients. This is a permanent error. The following address(es) have failed: test@example.com Could not connec… | 2) Mail delivery failed: returning message to senderThis message was created automatically, by the mail delivery software. A message that you have sent could not be delivered to one or more of its recipients. This is a permanent error. The following address(es) have failed: test@example.com Could not connec…
+[2025-11-16 20:29:21] [INFO] Opening login page: https://mail.ukr.net/
+[2025-11-16 20:29:23] [INFO] Filling username: test.playwright@ukr.net
+[2025-11-16 20:29:24] [INFO] Filling password
+[2025-11-16 20:29:24] [INFO] Clicking submit button
+[2025-11-16 20:29:24] [INFO] Waiting for compose button to be visible
+[2025-11-16 20:29:27] [INFO] Login successful, compose button visible
+[2025-11-16 20:29:27] [INFO] Opening email at index 0
+[2025-11-16 20:29:28] [INFO] Email opened successfully
+[2025-11-16 20:29:28] [INFO] Email details - From: Mail Delivery System mailer-daemon@ukr.net, To: test.playwright@ukr.net, Subject: Mail delivery failed: returning message to sender
+[2025-11-16 20:29:48] [INFO] Opening login page: https://mail.ukr.net/
+[2025-11-16 20:29:49] [INFO] Filling username: test.playwright@ukr.net
+[2025-11-16 20:29:50] [INFO] Filling password
+[2025-11-16 20:29:50] [INFO] Clicking submit button
+[2025-11-16 20:29:50] [INFO] Waiting for compose button to be visible
+[2025-11-16 20:29:53] [INFO] Login successful, compose button visible
+[2025-11-16 20:29:53] [INFO] Clicking compose button
+[2025-11-16 20:29:53] [INFO] Compose form opened successfully
+[2025-11-16 20:29:53] [INFO] Filling email fields - To: test@example.com, Subject: Test Email for Trainee AQA 2025-11-16 20:29:53
+[2025-11-16 20:29:54] [INFO] Filling email body in iframe
+[2025-11-16 20:29:55] [INFO] Clicking send button
+[2025-11-16 20:29:55] [INFO] Email sent successfully
+[2025-11-16 20:29:55] [INFO] Opening Sent folder
+[2025-11-16 20:29:56] [INFO] Sent folder loaded successfully
+[2025-11-16 20:29:56] [INFO] Last sent email subject: Test Email for Trainee AQA 2025-11-16 20:29:53Hello! This is a test email sent via Playwright POM.
