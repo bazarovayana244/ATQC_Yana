@@ -1,14 +1,23 @@
-import pytest
 from ui_automation.pages.login_page import LoginPage
 from ui_automation.pages.inbox_page import InboxPage
 from ui_automation.pages import locators
+from utils.browser_factory import BrowserFactory
+from utils.logger import Logger
 from playwright.sync_api import expect
 
-@pytest.mark.inbox
-@pytest.mark.usefixtures("page")
 class TestInboxPage:
 
-    def test_latest_two_emails_exist(self, page):
+    def test_latest_two_emails_exist(self):
+        log = Logger()
+        log.info("Starting test_latest_two_emails_exist")
+
+        browser, pw = BrowserFactory.get_browser(
+            browser_name="chrome",
+            headless=False,
+            viewport={"width": 1920, "height": 1080}
+        )
+        page = browser.new_page()
+
         login_page = LoginPage(page)
         inbox_page = InboxPage(page)
 
@@ -19,8 +28,24 @@ class TestInboxPage:
 
         emails = inbox_page.get_latest_two_emails()
         assert len(emails) == 2, f"Expected 2 emails, found {len(emails)}"
+        log.info(f"Found latest two emails: {emails}")
 
-    def test_email_details_non_empty(self, page):
+        log.info("Closing browser")
+        browser.close()
+        pw.stop()
+
+
+    def test_email_details_non_empty(self):
+        log = Logger()
+        log.info("Starting test_email_details_non_empty")
+
+        browser, pw = BrowserFactory.get_browser(
+            browser_name="chrome",
+            headless=False,
+            viewport={"width": 1920, "height": 1080}
+        )
+        page = browser.new_page()
+
         login_page = LoginPage(page)
         inbox_page = InboxPage(page)
 
@@ -34,7 +59,11 @@ class TestInboxPage:
 
         assert from_email != "", "From field is empty"
         assert to_email != "", "To field is empty"
-
         assert page.locator(locators.subject_xpath).is_visible(timeout=15000), "Subject element is not visible"
 
-        print("Email details are visible")
+        log.info(f"Email details - From: {from_email}, To: {to_email}, Subject: {subject}")
+        log.info("Email details are visible")
+
+        log.info("Closing browser")
+        browser.close()
+        pw.stop()

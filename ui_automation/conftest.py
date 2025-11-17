@@ -1,5 +1,4 @@
 import pytest
-from playwright.sync_api import sync_playwright
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -10,24 +9,6 @@ def pytest_addoption(parser):
     )
 
 @pytest.fixture(scope="session")
-def playwright_instance():
-    with sync_playwright() as p:
-        yield p
+def headless_option(pytestconfig):
+    return pytestconfig.getoption("--headless").lower() == "true"
 
-@pytest.fixture(scope="session")
-def browser(pytestconfig, playwright_instance):
-    headless_option = pytestconfig.getoption("--headless").lower() == "true"
-
-    browser = playwright_instance.chromium.launch(
-        headless=headless_option,
-        args=["--window-size=1600,900"]  # Works in headless & headed
-    )
-    yield browser
-    browser.close()
-
-@pytest.fixture(scope="function")
-def page(browser):
-    context = browser.new_context(no_viewport=True)
-    page = context.new_page()
-    yield page
-    context.close()
