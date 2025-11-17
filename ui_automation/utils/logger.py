@@ -1,6 +1,6 @@
 import threading
 import datetime
-
+import os
 
 class Logger:
     _instance = None
@@ -10,10 +10,14 @@ class Logger:
         with cls._lock:
             if cls._instance is None:
                 cls._instance = super().__new__(cls)
-        return cls._instance
 
-    def __init__(self):
-        self.log_file = "logs.txt"
+                logs_dir = "/home/yana/atqc/ui_automation/logs"
+                os.makedirs(logs_dir, exist_ok=True)
+
+                timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+                cls._instance.log_file = os.path.join(logs_dir, f"logs_{timestamp}.txt")
+
+        return cls._instance
 
     def _write(self, level: str, message: str):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
