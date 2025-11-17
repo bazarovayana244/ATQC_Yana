@@ -11,12 +11,11 @@ class TestInboxPage:
         log = Logger()
         log.info("Starting test_latest_two_emails_exist")
 
-        browser, pw = BrowserFactory.get_browser(
+        browser, pw, context, page = BrowserFactory.get_browser(
             browser_name="chrome",
             headless=False,
-            viewport={"width": 1920, "height": 1080}
+            args=["--window-size=1920,1080", "--disable-gpu"]
         )
-        page = browser.new_page()
 
         login_page = LoginPage(page)
         inbox_page = InboxPage(page)
@@ -34,17 +33,15 @@ class TestInboxPage:
         browser.close()
         pw.stop()
 
-
     def test_email_details_non_empty(self):
         log = Logger()
         log.info("Starting test_email_details_non_empty")
 
-        browser, pw = BrowserFactory.get_browser(
+        browser, pw, context, page = BrowserFactory.get_browser(
             browser_name="chrome",
             headless=False,
-            viewport={"width": 1920, "height": 1080}
+            args=["--window-size=1920,1080", "--disable-gpu"]
         )
-        page = browser.new_page()
 
         login_page = LoginPage(page)
         inbox_page = InboxPage(page)

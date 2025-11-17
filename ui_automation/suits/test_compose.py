@@ -12,12 +12,11 @@ class TestComposeEmail:
         log = Logger()
         log.info("Starting test_send_email_and_check_sent")
 
-        browser, pw = BrowserFactory.get_browser(
+        browser, pw, context, page = BrowserFactory.get_browser(
             browser_name="chrome",
             headless=False,
-            viewport={"width": 1920, "height": 1080}
+            args=["--window-size=1920,1080", "--disable-gpu"]
         )
-        page = browser.new_page()
 
         login_page = LoginPage(page)
         compose_page = ComposePage(page)
@@ -44,3 +43,4 @@ class TestComposeEmail:
         log.info("Closing browser")
         browser.close()
         pw.stop()
+
