@@ -1,5 +1,6 @@
 import pytest
-from playwright.sync_api import sync_playwright
+from utils.browser_factory import BrowserFactory
+from utils.logger import Logger
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -8,26 +9,34 @@ def pytest_addoption(parser):
         default="false",
         help="Run browser in headless mode: true or false"
     )
-
-@pytest.fixture(scope="session")
-def playwright_instance():
-    with sync_playwright() as p:
-        yield p
-
-@pytest.fixture(scope="session")
-def browser(pytestconfig, playwright_instance):
-    headless_option = pytestconfig.getoption("--headless").lower() == "true"
-
-    browser = playwright_instance.chromium.launch(
-        headless=headless_option,
-        args=["--window-size=1600,900"]  # Works in headless & headed
+    parser.addoption(
+        "--ui-browser",
+        action="store",
+        default="firefox",
+        help="Browser to use for UI tests: firefox, chrome, or webkit"
     )
-    yield browser
-    browser.close()
 
-@pytest.fixture(scope="function")
-def page(browser):
-    context = browser.new_context(no_viewport=True)
-    page = context.new_page()
+@pytest.fixture(scope="session")
+def headless_option(pytestconfig):
+    return pytestconfig.getoption("--headless").lower() == "true"
+
+@pytest.fixture(scope="session")
+def browser_option(pytestconfig):
+    return pytestconfig.getoption("--ui-browser").lower()
+
+@pytest.fixture
+def browser_page(headless_option, browser_option):
+    log = Logger()
+    log.info(f"Launching browser from fixture, headless={headless_option}, browser={browser_option}")
+
+    browser, pw, context, page = BrowserFactory.get_browser(
+        browser_name=browser_option,
+        headless=headless_option,
+        args=["--window-size=1920,1080"]
+    )
+
     yield page
-    context.close()
+
+    log.info("Closing browser from fixture")
+    browser.close()
+    pw.stop()
