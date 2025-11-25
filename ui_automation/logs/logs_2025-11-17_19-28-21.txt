@@ -1,0 +1,6 @@
+[2025-11-17 19:28:21] [INFO] Opening login page: https://mail.ukr.net/
+[2025-11-17 19:28:24] [INFO] Filling username: test.playwright@ukr.net
+[2025-11-17 19:28:26] [INFO] Filling password
+[2025-11-17 19:28:26] [INFO] Clicking submit button
+[2025-11-17 19:28:26] [INFO] Waiting for compose button to be visible
+[2025-11-17 19:28:32] [INFO] Login successful, compose button visible
