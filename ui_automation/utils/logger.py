@@ -5,19 +5,26 @@ import os
 class Logger:
     _instance = None
     _lock = threading.Lock()
+    _initialized = False
 
     def __new__(cls):
         with cls._lock:
             if cls._instance is None:
                 cls._instance = super().__new__(cls)
-
-                logs_dir = "/home/yana/atqc/ui_automation/logs"
-                os.makedirs(logs_dir, exist_ok=True)
-
-                timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                cls._instance.log_file = os.path.join(logs_dir, f"logs_{timestamp}.txt")
-
         return cls._instance
+
+    def __init__(self):
+        # Ensure initialization only happens once
+        if not getattr(self, '_initialized', False):
+            # Use a workspace-relative logs directory
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            logs_dir = os.path.join(base_dir, '..', 'logs')
+            logs_dir = os.path.abspath(logs_dir)
+            os.makedirs(logs_dir, exist_ok=True)
+
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            self.log_file = os.path.join(logs_dir, f"logs_{timestamp}.txt")
+            self._initialized = True
 
     def _write(self, level: str, message: str):
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
