@@ -11,7 +11,7 @@ def headless_option(pytestconfig):
 def testrail():
     base_url = "https://atqcyana.testrail.io/"
     username = "bazarovayana244@gmail.com"
-    api_key = "4Dl.awvJDWSezZZsoU8h-lQSBFPhm0a0uDw2BPU7t"
+    api_key = "xF5v9aEMlHBkppDdS2Ca-GYHc09Ovwp5RurDAAuBO"
     run_id = 13
     case_ids = {
         "test_successful_login": 44,
