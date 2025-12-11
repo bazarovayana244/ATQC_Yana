@@ -8,8 +8,8 @@ from playwright.sync_api import expect
 class TestComposeEmail:
 
     def test_send_email_and_check_sent(self, browser_page, testrail):
-        log = Logger()
         test_name = "test_send_email_and_check_sent"
+        log = Logger()
         log.info(f"Start {test_name}")
 
         page = browser_page
@@ -32,13 +32,11 @@ class TestComposeEmail:
             last_subject = compose_page.get_last_sent_email_subject().strip()
 
             assert subject_text in last_subject
-            log.info("Email found in Sent folder")
 
-            testrail.add_result_for_case(test_name, status_id=1, comment="Test passed (automated)")
+            testrail.add_result_for_case(test_name, 1, "Test passed")
+            log.info("Result sent to TestRail")
 
-        except AssertionError as ae:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Assertion failed: {ae}")
-            raise
         except Exception as e:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Error: {e}")
+            testrail.add_result_for_case(test_name, 5, f"Failed: {e}")
+            log.error(f"[TestRail ERROR] Cannot send result: {e}")
             raise

@@ -9,17 +9,14 @@ def headless_option(pytestconfig):
 
 @pytest.fixture(scope="session")
 def testrail():
-    base_url = "https://atqcyana.testrail.io/"
+    base_url = "https://atqcyana.testrail.io"
     username = "bazarovayana244@gmail.com"
     api_key = "xF5v9aEMlHBkppDdS2Ca-GYHc09Ovwp5RurDAAuBO"
     run_id = 13
-    case_ids = {
-        "test_successful_login": 44,
-        "test_email_details_non_empty": 43,
-        "test_latest_two_emails_exist": 42,
-        "test_send_email_and_check_sent": 41
-    }
-    client = TestRailClient(base_url, username, api_key, run_id, case_ids)
+
+    client = TestRailClient(base_url, username, api_key, run_id)
+    client.fetch_run_tests()
+
     return client
 
 @pytest.fixture

@@ -7,8 +7,8 @@ from playwright.sync_api import expect
 class TestInboxPage:
 
     def test_latest_two_emails_exist(self, browser_page, testrail):
-        log = Logger()
         test_name = "test_latest_two_emails_exist"
+        log = Logger()
         log.info(f"Start {test_name}")
 
         page = browser_page
@@ -24,19 +24,17 @@ class TestInboxPage:
             emails = inbox_page.get_latest_two_emails()
             assert len(emails) == 2
 
-            log.info(f"Latest emails: {emails}")
-            testrail.add_result_for_case(test_name, status_id=1, comment="Test passed (automated)")
+            testrail.add_result_for_case(test_name, 1, "Test passed")
+            log.info("Result sent to TestRail")
 
-        except AssertionError as ae:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Assertion failed: {ae}")
-            raise
         except Exception as e:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Error: {e}")
+            testrail.add_result_for_case(test_name, 5, f"Failed: {e}")
+            log.error(f"[TestRail ERROR] Cannot send result: {e}")
             raise
 
     def test_email_details_non_empty(self, browser_page, testrail):
-        log = Logger()
         test_name = "test_email_details_non_empty"
+        log = Logger()
         log.info(f"Start {test_name}")
 
         page = browser_page
@@ -56,13 +54,10 @@ class TestInboxPage:
             assert to_email
             assert page.locator(locators.subject_xpath).is_visible()
 
-            log.info(f"Email details OK: {from_email}, {to_email}, {subject}")
-            testrail.add_result_for_case(test_name, status_id=1, comment="Test passed (automated)")
+            testrail.add_result_for_case(test_name, 1, "Test passed")
+            log.info("Result sent to TestRail")
 
-        except AssertionError as ae:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Assertion failed: {ae}")
-            raise
         except Exception as e:
-            testrail.add_result_for_case(test_name, status_id=5, comment=f"Error: {e}")
+            testrail.add_result_for_case(test_name, 5, f"Failed: {e}")
+            log.error(f"[TestRail ERROR] Cannot send result: {e}")
             raise
-
