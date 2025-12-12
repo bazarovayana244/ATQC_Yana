@@ -1,33 +1,37 @@
 import pytest
-from playwright.sync_api import sync_playwright
-
-def pytest_addoption(parser):
-    parser.addoption(
-        "--headless",
-        action="store",
-        default="false",
-        help="Run browser in headless mode: true or false"
-    )
+from utils.browser_factory import BrowserFactory
+from utils.logger import Logger
+from utils.testrail_client import TestRailClient
 
 @pytest.fixture(scope="session")
-def playwright_instance():
-    with sync_playwright() as p:
-        yield p
+def headless_option(pytestconfig):
+    return pytestconfig.getoption("--headless", default="false").lower() == "true"
 
 @pytest.fixture(scope="session")
-def browser(pytestconfig, playwright_instance):
-    headless_option = pytestconfig.getoption("--headless").lower() == "true"
+def testrail():
+    base_url = "https://atqcyana.testrail.io"
+    username = "bazarovayana244@gmail.com"
+    api_key = "xF5v9aEMlHBkppDdS2Ca-GYHc09Ovwp5RurDAAuBO"
+    run_id = 13
 
-    browser = playwright_instance.chromium.launch(
+    client = TestRailClient(base_url, username, api_key, run_id)
+    client.fetch_run_tests()
+
+    return client
+
+@pytest.fixture
+def browser_page(headless_option):
+    log = Logger()
+    log.info(f"Launching browser, headless={headless_option}")
+
+    browser, pw, context, page = BrowserFactory.get_browser(
+        browser_name="chrome",
         headless=headless_option,
-        args=["--window-size=1600,900"]  # Works in headless & headed
+        args=["--window-size=1920,1080"]
     )
-    yield browser
-    browser.close()
 
-@pytest.fixture(scope="function")
-def page(browser):
-    context = browser.new_context(no_viewport=True)
-    page = context.new_page()
     yield page
-    context.close()
+
+    log.info("Closing browser")
+    browser.close()
+    pw.stop()
