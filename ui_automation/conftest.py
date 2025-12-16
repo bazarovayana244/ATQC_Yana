@@ -5,7 +5,7 @@ from utils.testrail_client import TestRailClient
 
 @pytest.fixture(scope="session")
 def headless_option(pytestconfig):
-    return pytestconfig.getoption("--headless", default="false").lower() == "true"
+    return pytestconfig.getoption("--headless", default="true").lower() == "true"
 
 @pytest.fixture(scope="session")
 def testrail():
@@ -25,7 +25,7 @@ def browser_page(headless_option):
     log.info(f"Launching browser, headless={headless_option}")
 
     browser, pw, context, page = BrowserFactory.get_browser(
-        browser_name="chrome",
+        browser_name="firefox",
         headless=headless_option,
         args=["--window-size=1920,1080"]
     )
