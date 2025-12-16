@@ -11,7 +11,7 @@ class Logger:
             if cls._instance is None:
                 cls._instance = super().__new__(cls)
 
-                logs_dir = "/home/yana/atqc_new/ATQC_Yana/ui_automation/logs"
+                logs_dir = os.path.join(os.environ.get("WORKSPACE", "."), "ui_automation", "logs")
                 os.makedirs(logs_dir, exist_ok=True)
 
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
